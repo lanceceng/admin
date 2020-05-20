@@ -124,31 +124,25 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
     </dependencies>
 
     <profiles>
-        <profile>
-            <id>test</id>
-            <properties>
-                <config.dir>test</config.dir>
-            </properties>
-        </profile>
+        <!-- dev开发环境配置,prod为生产环境配置 -->
         <profile>
             <id>dev</id>
             <properties>
-                <config.dir>dev</config.dir>
+                <profileActive>dev</profileActive>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
-       <!-- <profile>
-            <id>qa</id>
+        <profile>
+            <id>prod</id>
             <properties>
-                <config.dir>qa</config.dir>
+                <profileActive>prod</profileActive>
             </properties>
-        </profile>-->
+        </profile>
     </profiles>
 
     <build>
@@ -157,28 +151,41 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!--<plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>${mybatis-generator.version}</version>
+            <!--防止在yml文件中使用@报错-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
                 <configuration>
-                    <verbose>true</verbose>
-                    <overwrite>true</overwrite>
+                    <delimiters>@</delimiters>
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
+                    <encoding>UTF-8</encoding>
                 </configuration>
-            </plugin>-->
+            </plugin>
         </plugins>
 
         <resources>
             <resource>
+                <directory>src/main/resources</directory>
+                <!-- 处理文件时替换文件中的变量 -->
                 <filtering>true</filtering>
-                <directory>src/main/resources/config/${config.dir}</directory>
-                <includes>
-                    <include>*.*</include>
-                </includes>
+                <excludes>
+                    <!-- 打包时排除文件，可自行添加test.yml -->
+                    <!--<exclude>application.yml</exclude>
+                    <exclude>application-dev.yml</exclude>
+                    <exclude>application-prod.yml</exclude>-->
+                    <exclude>application*.yml</exclude>
+                </excludes>
             </resource>
             <resource>
-                <directory>src/main/resources/</directory>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <!-- 打包时所包含得文件 -->
+                <includes>
+                    <include>application.yml</include>
+                    <include>application-${profileActive}.yml</include>
+                </includes>
             </resource>
         </resources>
     </build>
+    <!-- mvn clean package -P prod 更换配置打包命令-->
 </project>

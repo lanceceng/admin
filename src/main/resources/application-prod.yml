@@ -1,7 +1,5 @@
 spring:
-  profiles:
-    # 激活的配置
-    active: dev
+  profiles: prod
   # 终端彩色输出信息
   output.ansi.enabled: ALWAYS
   resources:
@@ -50,7 +48,7 @@ spring:
         maxActive: 20
 
 server:
-  port: 8080
+  port: 8081
 
 #mybatis-plus:
 #  #外部化xml配置
