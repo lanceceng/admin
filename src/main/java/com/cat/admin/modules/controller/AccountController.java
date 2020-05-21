@@ -2,13 +2,13 @@ package com.cat.admin.modules.controller;
 
 
 import com.cat.admin.core.distLock.NoRepeatSubmit;
+import com.cat.admin.core.utils.RedisUtil;
 import com.cat.admin.modules.entity.AccountEntity;
 import com.cat.admin.modules.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -28,6 +28,9 @@ public class AccountController {
 
     @Autowired
     private AccountService accountService;
+
+    @Autowired
+    private RedisUtil redisUtils;
 
     @GetMapping("/page")
     public Object selectPage(){
