@@ -1,6 +1,7 @@
 package com.cat.admin.modules.controller;
 
 
+import com.cat.admin.core.distLock.NoRepeatSubmit;
 import com.cat.admin.modules.entity.AccountEntity;
 import com.cat.admin.modules.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,7 @@ public class AccountController {
     }
 
     @GetMapping("/list2")
+    @NoRepeatSubmit
     public Object selectAccount2(){
         List<Map<String, Object>> list = accountService.selectAccount2();
         return list;
