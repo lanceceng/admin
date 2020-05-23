@@ -45,7 +45,7 @@ public class RedisLock {
 //            Object result = redisTemplate.execute(redisScript, Collections.singletonList(lockKey), clientId, seconds);
             String script = "if redis.call('setNx',KEYS[1],ARGV[1]) == 1 then if redis.call('get',KEYS[1]) == ARGV[1] then return redis.call('expire',KEYS[1],ARGV[2]) else return 0 end else return 0 end";
             Object result = redisTemplate.execute(new DefaultRedisScript<>(script, Object.class), Collections.singletonList(lockKey), clientId, seconds+"");
-            if (RELEASE_SUCCESS.equals(((ArrayList) result).get(0))) {
+                if (RELEASE_SUCCESS.equals(((ArrayList) result).get(0))) {
                 return true;
             }
         } catch (Exception e) {

@@ -30,7 +30,7 @@ public class AccountController {
     private AccountService accountService;
 
     @Autowired
-    private RedisUtil redisUtils;
+    private RedisUtil redisUtil;
 
     @GetMapping("/page")
     public Object selectPage(){
@@ -47,7 +47,10 @@ public class AccountController {
     @GetMapping("/list2")
     @NoRepeatSubmit
     public Object selectAccount2(){
+        redisUtil.set("gg", "213");
         List<Map<String, Object>> list = accountService.selectAccount2();
+        Object obj = redisUtil.get("gg");
+        System.out.println(obj);
         return list;
     }
 }
