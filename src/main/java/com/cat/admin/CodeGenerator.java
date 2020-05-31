@@ -34,7 +34,9 @@ public class CodeGenerator {
         gc.setBaseColumnList(true);				//开启 baseColumnList 默认false
         gc.setBaseResultMap(true);				//开启 BaseResultMap 默认false
         gc.setEntityName("%sEntity");			//实体命名方式  默认值：null 例如：%sEntity 生成 UserEntity
-        gc.setMapperName("%sMapper");			//mapper 命名方式 默认值：null 例如：%sDao 生成 UserDao
+//        gc.setEntityName("%s");
+//        gc.setMapperName("%sMapper");			//mapper 命名方式 默认值：null 例如：%sDao 生成 UserDao
+        gc.setMapperName("%sDao");
         gc.setXmlName("%sMapper");				//Mapper xml 命名方式   默认值：null 例如：%sDao 生成 UserDao.xml
         gc.setServiceName("%sService");			//service 命名方式   默认值：null 例如：%sBusiness 生成 UserBusiness
         gc.setServiceImplName("%sServiceImpl");	//service impl 命名方式  默认值：null 例如：%sBusinessImpl 生成 UserBusinessImpl
@@ -44,7 +46,7 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/admin_dev?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC");
+        dsc.setUrl("jdbc:mysql://localhost:3306/c1_admin?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
@@ -52,7 +54,7 @@ public class CodeGenerator {
         mpg.setDataSource(dsc);
 
         List<String> list = new ArrayList<>();
-        list.add("account");
+        list.add("sys_user");
 //        list.add("role");
         for(String tablename:list){
 

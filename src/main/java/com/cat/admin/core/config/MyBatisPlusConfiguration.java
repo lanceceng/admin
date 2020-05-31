@@ -27,7 +27,7 @@ import java.util.Map;
 //自定义事务管理器
 @EnableTransactionManagement
 @Configuration
-@MapperScan("com.cat.admin.modules.mapper*")
+@MapperScan("com.cat.admin.modules.dao*")
 public class MyBatisPlusConfiguration {
 
     /*
