@@ -1,4 +1,4 @@
-package com.example.auth.demo.domain;
+package com.cat.admin.core.utils;
 
 /**
  * @author Joetao

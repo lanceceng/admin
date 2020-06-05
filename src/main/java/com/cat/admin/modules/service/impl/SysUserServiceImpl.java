@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 用户表(SysUser)表服务实现类
@@ -76,5 +77,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     @Override
     public boolean deleteById(Integer id) {
         return this.sysUserDao.deleteById(id) > 0;
+    }
+
+    public List<Map<String, Object>> getJson(){
+        return baseMapper.getJson();
     }
 }

@@ -137,4 +137,8 @@
         delete from c1_admin.sys_user where id = #{id}
     </delete>
 
+    <select id="getJson" resultType="java.util.Map">
+        SELECT uid,json_unquote(json_extract(info,'$.mail')) AS 'mail',json_unquote(json_extract(info,'$.name')) AS 'name' FROM USER;
+    </select>
+
 </mapper>

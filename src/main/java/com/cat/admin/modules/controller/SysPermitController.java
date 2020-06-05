@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  * @since 2020-05-31 23:38:28
  */
 @RestController
-@RequestMapping("sysPermit")
+@RequestMapping("permit")
 public class SysPermitController {
     /**
      * 服务对象

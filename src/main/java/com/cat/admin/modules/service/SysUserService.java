@@ -2,6 +2,8 @@ package com.cat.admin.modules.service;
 
 import com.cat.admin.modules.entity.SysUser;
 import java.util.List;
+import java.util.Map;
+
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -52,5 +54,7 @@ public interface SysUserService extends IService<SysUser> {
      * @return 是否成功
      */
     boolean deleteById(Integer id);
+
+    List<Map<String, Object>> getJson();
 
 }

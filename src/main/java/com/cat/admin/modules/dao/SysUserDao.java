@@ -3,6 +3,8 @@ package com.cat.admin.modules.dao;
 import com.cat.admin.modules.entity.SysUser;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
+import java.util.Map;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -62,5 +64,7 @@ public interface SysUserDao extends BaseMapper<SysUser>{
      * @return 影响行数
      */
     int deleteById(Integer id);
+
+    List<Map<String, Object>> getJson();
 
 }

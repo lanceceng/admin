@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  * @since 2020-05-31 23:38:28
  */
 @RestController
-@RequestMapping("sysRole")
+@RequestMapping("role")
 public class SysRoleController {
     /**
      * 服务对象
