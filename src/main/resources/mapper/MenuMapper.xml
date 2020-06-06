@@ -21,7 +21,7 @@
     <select id="selectMenus" resultMap="BaseResultMap">
         SELECT
              *
-        FROM t_sys_menu
+        FROM sys_menu
         WHERE
              1 = 1
         <if test="filter.id!=null and filter.id!=''">
@@ -33,7 +33,7 @@
     <select id="findByResources" resultType="com.cat.admin.modules.entity.Menu">
 		SELECT
              *
-        FROM t_sys_menu
+        FROM sys_menu
 		WHERE
 		1 = 1
 		<if test="resources!=null and resources!=''">
@@ -42,8 +42,8 @@
 	</select>
 
     <select id="selectMenuByRoleId" resultType="com.cat.admin.modules.entity.Menu">
-		SELECT sm.* FROM t_sys_menu sm
-	    LEFT JOIN t_sys_role_menu srm ON sm.id = srm.menu_id
+		SELECT sm.* FROM sys_menu sm
+	    LEFT JOIN sys_role_menu srm ON sm.id = srm.menu_id
 	    WHERE srm.role_id = #{roleId}
 	</select>
 

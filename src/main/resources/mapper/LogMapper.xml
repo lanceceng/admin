@@ -18,8 +18,8 @@
     <select id="selectLogs" resultMap="BaseResultMap">
         SELECT
              sl.*,su.nick_name as username
-        FROM t_sys_log sl
-        LEFT JOIN t_sys_user su ON sl.user_id = su.id
+        FROM sys_log sl
+        LEFT JOIN sys_user su ON sl.user_id = su.id
         WHERE
              1 = 1
         <if test="filter.id!=null and filter.id!=''">

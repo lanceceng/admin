@@ -25,7 +25,7 @@
     <select id="selectUsers" resultMap="BaseResultMap">
         SELECT
              *
-        FROM t_sys_user
+        FROM sys_user
         WHERE
              1 = 1
         <if test="filter.id!=null and filter.id!=''">
@@ -43,7 +43,7 @@
     <select id="selectUserByUsername" resultType="com.cat.admin.modules.entity.User">
 		SELECT
 			*
-		FROM t_sys_user
+		FROM sys_user
 		WHERE 1 = 1
 		<if test="username!=null and username!=''">
 			AND	username = #{username}
@@ -53,7 +53,7 @@
     <select id="getUserInfoByToken" resultType="com.cat.admin.modules.entity.User">
 		SELECT
 		*
-		FROM t_sys_user
+		FROM sys_user
 		WHERE 1 = 1
 		<if test="token!=null and token!=''">
 			AND	token = #{token}
@@ -63,7 +63,7 @@
 	<select id="getUserInfoByQQ" resultType="com.cat.admin.modules.entity.User">
 		SELECT
 		*
-		FROM t_sys_user
+		FROM sys_user
 		WHERE 1 = 1
 		<if test="qq_oppen_id!=null and qq_oppen_id!=''">
 			AND	qq_oppen_id = #{qq_oppen_id}
@@ -71,8 +71,8 @@
 	</select>
 
 	<select id="selectUserByRoleId" resultType="com.cat.admin.modules.entity.User">
-        SELECT su.* FROM t_sys_user su
-        LEFT JOIN t_sys_user_role sur ON su.id=sur.user_id
+        SELECT su.* FROM sys_user su
+        LEFT JOIN sys_user_role sur ON su.id=sur.user_id
         WHERE sur.role_id = #{roleId}
     </select>
 

@@ -16,7 +16,7 @@
     <select id="selectRoleMenus" resultMap="BaseResultMap">
         SELECT
              *
-        FROM t_sys_role_menu
+        FROM sys_role_menu
         WHERE
              1 = 1
         <if test="filter.id!=null and filter.id!=''">
@@ -29,7 +29,7 @@
     </select>
 
     <delete id="deleteByRoleId">
-        DELETE FROM t_sys_role_menu
+        DELETE FROM sys_role_menu
         WHERE 1=1
         <if test="roleId!=null">
             AND role_id = #{roleId}
@@ -40,8 +40,8 @@
         SELECT
             p.*
         FROM
-            t_sys_role_menu rp
-        LEFT JOIN t_sys_menu p ON rp.menu_id = p.id
+            sys_role_menu rp
+        LEFT JOIN sys_menu p ON rp.menu_id = p.id
         WHERE 1=1
         <if test="roleId!=null">
             AND	role_id= #{roleId}
