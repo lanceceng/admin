@@ -11,7 +11,7 @@ import javax.validation.groups.Default;
  *                                              private Long userId; `
  *  【注】注意:在声明分组的时候尽量加上 extend javax.validation.groups.Default 否则,在你声明@Validated(Update.class)的时候,就会出现你在默认没添加groups = {}的时候的校验组@Email(message = "邮箱格式不对"),会不去校验,因为默认的校验组是groups = {Default.class}.
  * @author : cat
- * @date : 2019/9/9 16:51
+ * @date : 2020-06-07
  */
 public interface Create extends Default {
 }

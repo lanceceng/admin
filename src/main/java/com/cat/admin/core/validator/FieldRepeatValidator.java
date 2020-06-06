@@ -5,11 +5,11 @@ import javax.validation.Payload;
 import java.lang.annotation.*;
 
 /**
- *  <p> 自定义字段对应数据库内容重复校验 注解 </p>
+ * <p> 自定义字段对应数据库内容重复校验 注解 </p>
  *
- * @description :
  * @author : cat
- * @date : 2019/9/10 9:32
+ * @description :
+ * @date : 2020-06-07
  */
 // 元注解: 给其他普通的标签进行解释说明 【@Retention、@Documented、@Target、@Inherited、@Repeatable】
 @Documented
@@ -38,24 +38,30 @@ public @interface FieldRepeatValidator {
 
     /**
      * 实体类id字段 - 默认为id （该值可无）
+     *
      * @return
      */
-    String id() default "id";;
+    String id() default "id";
+
+    ;
 
     /**
      * 注解属性 - 对应校验字段
+     *
      * @return
      */
     String field();
 
     /**
      * 默认错误提示信息
+     *
      * @return
      */
     String message() default "字段内容重复！";
 
     Class<?>[] groups() default {};
-    Class<? extends Payload>[]  payload() default {};
+
+    Class<? extends Payload>[] payload() default {};
 
 }
 

@@ -172,3 +172,8 @@ cat:
       - /**/*.css
       - /**/*.png
       - /**/*.ico
+
+#关于actuator站点访问401错误的解决方案
+#management:
+#  security:
+#    enabled: false
