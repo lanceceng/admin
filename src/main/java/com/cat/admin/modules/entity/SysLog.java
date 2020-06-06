@@ -19,7 +19,7 @@ import java.io.Serializable;
  */
 @Data
 @ApiModel(description = "系统管理 - 日志表")
-@TableName("t_sys_log")
+@TableName("sys_log")
 public class SysLog extends BaseEntity<SysLog> {
 
     private static final long serialVersionUID = 1L;

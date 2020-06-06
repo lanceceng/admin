@@ -27,7 +27,7 @@ import java.io.Serializable;
  */
 @Data
 @ApiModel(description = "系统管理-用户基础信息表")
-@TableName("t_sys_user")
+@TableName("sys_user")
 // 对注解分组的排序，可以通脱他判断先后顺序
 //@GroupSequence({FieldRepeatValidator.class,NotNull.class, Default.class})
 @FieldRepeatValidator(field = "username", message = "账号重复，请重新输入账号！")

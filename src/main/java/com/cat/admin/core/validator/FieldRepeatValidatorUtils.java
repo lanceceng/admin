@@ -107,7 +107,9 @@ public class FieldRepeatValidatorUtils {
                         // ⑥ 获取该校验字段对应的数据库字段属性  目的： 给 mybatis-plus 做ar查询使用
 //                        TableField annotation = f.getAnnotation(TableField.class);
                         TableField annotation = AnnotationUtils.getAnnotation(f, TableField.class);
-                        db_field = annotation.value();
+                        if(null != annotation) {
+                            db_field = annotation.value();
+                        }
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
                     }

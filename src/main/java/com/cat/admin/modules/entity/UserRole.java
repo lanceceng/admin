@@ -19,7 +19,7 @@ import java.io.Serializable;
  */
 @Data
 @ApiModel(description = "系统管理 - 用户角色关联表 ")
-@TableName("t_sys_user_role")
+@TableName("sys_user_role")
 public class UserRole extends BaseEntity<UserRole> {
 
     private static final long serialVersionUID = 1L;

@@ -22,7 +22,7 @@ import java.io.Serializable;
  */
 @Data
 @ApiModel(description = "系统管理-菜单表 ")
-@TableName("t_sys_menu")
+@TableName("sys_menu")
 @FieldRepeatValidator(field = "resources", message = "菜单编码重复！")
 public class Menu extends BaseEntity {
 

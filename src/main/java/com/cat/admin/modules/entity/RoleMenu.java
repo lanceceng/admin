@@ -19,7 +19,7 @@ import java.io.Serializable;
  */
 @Data
 @ApiModel(description = "系统管理 - 角色-菜单关联表 ")
-@TableName("t_sys_role_menu")
+@TableName("sys_role_menu")
 public class RoleMenu extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
