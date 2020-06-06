@@ -1,6 +1,6 @@
 package com.cat.admin.modules.controller;
 
-import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cat.admin.core.api.BaseController;
 import com.cat.admin.core.utils.ApiResult;
 import com.cat.admin.modules.dto.input.UserRoleQueryPara;

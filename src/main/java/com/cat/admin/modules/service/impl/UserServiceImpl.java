@@ -1,7 +1,7 @@
 package com.cat.admin.modules.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cat.admin.core.config.Constants;
 import com.cat.admin.core.exception.MyException;

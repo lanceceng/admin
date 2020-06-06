@@ -1,9 +1,9 @@
 package com.cat.admin.modules.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cat.admin.modules.dto.input.LogQueryPara;
 import com.cat.admin.modules.entity.SysLog;
-import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public interface LogMapper extends BaseMapper<SysLog> {
      * @param filter
      * @return
      */
-    List<SysLog> selectLogs(Pagination page, @Param("filter") LogQueryPara filter);
+    List<SysLog> selectLogs(Page page, @Param("filter") LogQueryPara filter);
 
     /**
      * 列表

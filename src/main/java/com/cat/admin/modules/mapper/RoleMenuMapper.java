@@ -1,10 +1,10 @@
 package com.cat.admin.modules.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cat.admin.modules.dto.input.RoleMenuQueryPara;
 import com.cat.admin.modules.entity.Menu;
 import com.cat.admin.modules.entity.RoleMenu;
-import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public interface RoleMenuMapper extends BaseMapper<RoleMenu> {
      * @param filter
      * @return
      */
-    List<RoleMenu> selectRoleMenus(Pagination page, @Param("filter") RoleMenuQueryPara filter);
+    List<RoleMenu> selectRoleMenus(Page page, @Param("filter") RoleMenuQueryPara filter);
 
     /**
      * 列表

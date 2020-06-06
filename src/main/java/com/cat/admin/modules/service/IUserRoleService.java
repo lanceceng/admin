@@ -1,6 +1,6 @@
 package com.cat.admin.modules.service;
 
-import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cat.admin.modules.dto.input.UserRoleQueryPara;
 import com.cat.admin.modules.entity.UserRole;

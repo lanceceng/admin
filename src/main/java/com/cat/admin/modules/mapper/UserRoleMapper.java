@@ -1,10 +1,10 @@
 package com.cat.admin.modules.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cat.admin.modules.dto.input.UserRoleQueryPara;
 import com.cat.admin.modules.entity.Role;
 import com.cat.admin.modules.entity.UserRole;
-import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public interface UserRoleMapper extends BaseMapper<UserRole> {
      * @param filter
      * @return
      */
-    List<UserRole> selectUserRoles(Pagination page, @Param("filter") UserRoleQueryPara filter);
+    List<UserRole> selectUserRoles(Page page, @Param("filter") UserRoleQueryPara filter);
 
     /**
      * 列表

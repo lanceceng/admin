@@ -3,7 +3,7 @@ package com.cat.admin.modules.controller;
 import cn.hutool.core.bean.BeanUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cat.admin.core.api.BaseController;
 import com.cat.admin.core.utils.ApiResult;
 import com.cat.admin.core.utils.TreeBuilder;

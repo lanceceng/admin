@@ -1,10 +1,11 @@
 package com.cat.admin.core.validator;
 
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.cat.admin.core.entity.BaseEntity;
 import com.cat.admin.core.exception.MyException;
 import io.swagger.annotations.ApiModelProperty;
+import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.util.CollectionUtils;
 
 import java.lang.reflect.Field;
@@ -66,7 +67,7 @@ public class FieldRepeatValidatorUtils {
         // 工厂模式 + ar动态语法
         BaseEntity entity = (BaseEntity) object;
 //        List list = entity.selectPage( new Page<>( 1,1 ), new EntityWrapper().eq( field, fieldValue ) ).getRecords();
-        List list = entity.selectList( new EntityWrapper().eq( db_field, fieldValue ) );
+        List list = entity.selectList( new QueryWrapper<>().eq( db_field, fieldValue ) );
         // 如果数据重复返回false -> 再返回自定义错误消息到前端
         if ( idValue == null ){
             if ( !CollectionUtils.isEmpty( list ) ){
@@ -104,7 +105,8 @@ public class FieldRepeatValidatorUtils {
                         // ⑤ 如果一致则获取其属性值
                         fieldValue = f.get(object);
                         // ⑥ 获取该校验字段对应的数据库字段属性  目的： 给 mybatis-plus 做ar查询使用
-                        TableField annotation = f.getAnnotation(TableField.class);
+//                        TableField annotation = f.getAnnotation(TableField.class);
+                        TableField annotation = AnnotationUtils.getAnnotation(f, TableField.class);
                         db_field = annotation.value();
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();

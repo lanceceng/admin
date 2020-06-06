@@ -1,9 +1,9 @@
 package com.cat.admin.modules.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cat.admin.modules.dto.input.MenuQueryPara;
 import com.cat.admin.modules.entity.Menu;
-import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public interface MenuMapper extends BaseMapper<Menu> {
      * @param filter
      * @return
      */
-    List<Menu> selectMenus(Pagination page, @Param("filter") MenuQueryPara filter);
+    List<Menu> selectMenus(Page page, @Param("filter") MenuQueryPara filter);
 
     /**
      * 列表

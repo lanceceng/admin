@@ -1,15 +1,15 @@
 package com.cat.admin.modules.service.impl;
 
-import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cat.admin.modules.dto.input.LogQueryPara;
 import com.cat.admin.modules.entity.SysLog;
 import com.cat.admin.modules.mapper.LogMapper;
 import com.cat.admin.modules.service.ILogService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -22,7 +22,7 @@ import java.util.List;
 @Transactional
 public class LogServiceImpl extends ServiceImpl<LogMapper, SysLog> implements ILogService {
 
-    @Autowired
+    @Resource
     LogMapper logMapper;
 
     @Override

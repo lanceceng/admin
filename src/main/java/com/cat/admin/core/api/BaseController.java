@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @description:
  * @author: cat
- * @date: 2019/8/17 0017 19:53
+ * @date: 2020/06/06
  */
 @RestController
 @Slf4j
 public class BaseController {
 
-    public Logger LOG = LoggerFactory.getLogger( getClass() );
+    public Logger LOG = LoggerFactory.getLogger(getClass());
 
 }

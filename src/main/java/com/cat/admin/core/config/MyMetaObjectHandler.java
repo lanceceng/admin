@@ -1,6 +1,7 @@
 package com.cat.admin.core.config;
 
-import com.baomidou.mybatisplus.mapper.MetaObjectHandler;
+import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+
 import com.cat.admin.core.utils.DateTimeUtils;
 import org.apache.ibatis.reflection.MetaObject;
 import org.slf4j.Logger;
@@ -18,7 +19,7 @@ import java.util.Date;
  * @date: 2020-06-06
  */
 @Component
-public class MyMetaObjectHandler extends MetaObjectHandler {
+public class MyMetaObjectHandler implements MetaObjectHandler {
 
     private static final Logger LOG = LoggerFactory.getLogger(MyMetaObjectHandler.class);
 

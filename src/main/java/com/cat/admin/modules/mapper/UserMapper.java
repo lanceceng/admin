@@ -1,9 +1,9 @@
 package com.cat.admin.modules.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cat.admin.modules.dto.input.UserQueryPara;
 import com.cat.admin.modules.entity.User;
-import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public interface UserMapper extends BaseMapper<User> {
      * @param filter
      * @return
      */
-    List<User> selectUsers(Pagination page, @Param("filter") UserQueryPara filter);
+    List<User> selectUsers(Page page, @Param("filter") UserQueryPara filter);
 
     /**
      * 列表

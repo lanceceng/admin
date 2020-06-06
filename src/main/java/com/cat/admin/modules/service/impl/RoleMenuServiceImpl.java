@@ -1,13 +1,12 @@
 package com.cat.admin.modules.service.impl;
 
-import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cat.admin.modules.dto.input.RoleMenuQueryPara;
 import com.cat.admin.modules.entity.RoleMenu;
 import com.cat.admin.modules.mapper.RoleMenuMapper;
 import com.cat.admin.modules.service.IRoleMenuService;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
