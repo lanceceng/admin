@@ -2,6 +2,9 @@ package com.cat.admin.core.config;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
+import com.baomidou.mybatisplus.core.config.GlobalConfig;
+import com.baomidou.mybatisplus.entity.GlobalConfiguration;
+import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
@@ -101,19 +104,29 @@ public class MyBatisPlusConfiguration {
         sqlSessionFactory.setPlugins(new Interceptor[]{ //PerformanceInterceptor(),OptimisticLockerInterceptor()
                 paginationInterceptor() //添加分页功能
         });
-        //sqlSessionFactory.setGlobalConfig(globalConfiguration());
+        sqlSessionFactory.setGlobalConfig(globalConfiguration());
         return sqlSessionFactory.getObject();
     }
 
-    /*@Bean
-    public GlobalConfiguration globalConfiguration() {
-        GlobalConfiguration conf = new GlobalConfiguration(new LogicSqlInjector());
-        conf.setLogicDeleteValue("-1");
-        conf.setLogicNotDeleteValue("1");
-        conf.setIdType(0);
-        //conf.setMetaObjectHandler(new MyMetaObjectHandler());
-        conf.setDbColumnUnderline(true);
-        conf.setRefresh(true);
+//    3.0以前的全局参数配置
+//    @Bean
+//    public GlobalConfiguration globalConfiguration() {
+//        GlobalConfiguration conf = new GlobalConfiguration(new LogicSqlInjector());
+//        conf.setLogicDeleteValue("-1");
+//        conf.setLogicNotDeleteValue("1");
+//        conf.setIdType(0);
+//        //conf.setMetaObjectHandler(new MyMetaObjectHandler());
+//        conf.setDbColumnUnderline(true);
+//        conf.setRefresh(true);
+//        return conf;
+//    }
+
+//    3.0RC以后的全局参数配置
+    @Bean
+    public GlobalConfig globalConfiguration() {
+        GlobalConfig conf = new GlobalConfig();
+        conf.setSqlInjector(new LogicSqlInjector()); //全局配置Sql注入器
+        conf.setMetaObjectHandler(new MyMetaObjectHandler());
         return conf;
-    }*/
+    }
 }

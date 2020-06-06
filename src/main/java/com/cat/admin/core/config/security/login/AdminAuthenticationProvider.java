@@ -25,7 +25,8 @@ import org.springframework.stereotype.Component;
 public class AdminAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
-    UserDetailsServiceImpl userDetailsService;
+    private UserDetailsServiceImpl userDetailsService;
+
     @Autowired
     private UserMapper userMapper;
 
@@ -37,7 +38,7 @@ public class AdminAuthenticationProvider implements AuthenticationProvider {
 
         SecurityUser userInfo = (SecurityUser) userDetailsService.loadUserByUsername(userName);
 
-        boolean isValid = PasswordUtils.isValidPassword(password, userInfo.getPassword(), userInfo.getCurrentUserInfo().getSalt());
+        boolean isValid = PasswordUtils.isValidPassword(password, userInfo.getPassword(), Constants.SALT);
         // 验证密码
         if (!isValid) {
             throw new BadCredentialsException("密码错误！");

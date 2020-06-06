@@ -99,11 +99,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public Integer saveUser(User para) {
         if (para.getId()!=null) {
-            User user = userMapper.selectById(para.getId());
-            para.setPassword( PasswordUtils.encodePassword(para.getPwd(), user.getSalt()));
+//            User user = userMapper.selectById(para.getId());
+            para.setPassword( PasswordUtils.encodePassword(para.getPwd(), Constants.SALT));
             userMapper.updateById(para);
         } else {
-            para.setSalt( Constants.SALT );
+//            para.setSalt( Constants.SALT );
             para.setPassword( PasswordUtils.encodePassword(para.getPwd(), Constants.SALT));
             userMapper.insert(para);
         }
@@ -127,7 +127,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
                 throw new MyException("请设置至少6位数密码！");
             }
             // 更新密码
-            para.setPassword( PasswordUtils.encodePassword(para.getPwd(), user.getSalt()));
+            para.setPassword( PasswordUtils.encodePassword(para.getPwd(), Constants.SALT));
         } else {
             para.setPwd(null);
         }

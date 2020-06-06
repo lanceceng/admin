@@ -110,9 +110,9 @@ public class User extends BaseEntity<User> {
     /**
      * 盐值
      */
-    @ApiModelProperty(value = "盐值")
-    @TableField("salt")
-    private String salt;
+//    @ApiModelProperty(value = "盐值")
+//    @TableField("salt")
+//    private String salt;
     /**
      * token
      */

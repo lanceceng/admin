@@ -8,8 +8,10 @@
 		<result column="code" property="code" />
 		<result column="name" property="name" />
 		<result column="remarks" property="remarks" />
-        <result column="gmt_create" property="gmtCreate" />
-        <result column="gmt_modified" property="gmtModified" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_id" property="createId" />
+        <result column="update_id" property="updateId" />
 	</resultMap>
 
     <resultMap id="ResultMap" type="com.cat.admin.modules.dto.output.RoleView" extends="BaseResultMap"/>
@@ -33,7 +35,7 @@
         <if test="filter.name!=null and filter.name!=''">
             AND sr.name LIKE '%${filter.name}%'
         </if>
-        ORDER BY sr.gmt_modified DESC
+        ORDER BY sr.update_time DESC
     </select>
 
     <select id="selectRoleByUserId" resultType="com.cat.admin.modules.entity.Role">

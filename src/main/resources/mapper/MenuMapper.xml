@@ -14,8 +14,10 @@
 		<result column="icon" property="icon" />
 		<result column="type" property="type" />
 		<result column="remarks" property="remarks" />
-		<result column="gmt_create" property="gmtCreate" />
-		<result column="gmt_modified" property="gmtModified" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="create_id" property="createId" />
+		<result column="update_id" property="updateId" />
 	</resultMap>
 
     <select id="selectMenus" resultMap="BaseResultMap">

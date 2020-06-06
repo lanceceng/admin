@@ -11,8 +11,10 @@
 		<result column="user_id" property="userId" />
 		<result column="status" property="status" />
 		<result column="execute_time" property="executeTime" />
-		<result column="gmt_create" property="gmtCreate" />
-		<result column="gmt_modified" property="gmtModified" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="create_id" property="createId" />
+		<result column="update_id" property="updateId" />
 	</resultMap>
 
     <select id="selectLogs" resultMap="BaseResultMap">

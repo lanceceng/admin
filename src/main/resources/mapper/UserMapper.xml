@@ -14,11 +14,13 @@
 		<result column="email" property="email" />
 		<result column="avatar" property="avatar" />
 		<result column="flag" property="flag" />
-		<result column="salt" property="salt" />
+		<!--<result column="salt" property="salt" />-->
 		<result column="token" property="token" />
 		<result column="qq_oppen_id" property="qqOppenId" />
-		<result column="gmt_create" property="gmtCreate" />
-		<result column="gmt_modified" property="gmtModified" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="create_id" property="createId" />
+		<result column="update_id" property="updateId" />
 	</resultMap>
 
 
