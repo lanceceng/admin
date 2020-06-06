@@ -8,6 +8,7 @@ import com.cat.admin.modules.entity.User;
 import org.apache.ibatis.reflection.MetaObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -27,20 +28,17 @@ import java.util.Date;
  * @date: 2020-06-06
  */
 @Component
-public class MyMetaObjectHandler implements MetaObjectHandler, IAuthenticationFacade {
+public class MyMetaObjectHandler implements MetaObjectHandler {
 
     private static final Logger LOG = LoggerFactory.getLogger(MyMetaObjectHandler.class);
 
-    @Override
-    public Authentication getAuthentication() {
-        return SecurityContextHolder.getContext().getAuthentication();
-    }
-
-    @Override
     public User getCurrentUser(){
-        Authentication authentication = this.getAuthentication();
-        SecurityUser userDetails = (SecurityUser) authentication.getPrincipal();
-        User currentUser = userDetails.getCurrentUserInfo();
+        User currentUser = null;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (null != authentication && !(authentication instanceof AnonymousAuthenticationToken)) {
+            SecurityUser userDetails = (SecurityUser) authentication.getPrincipal();
+            currentUser = userDetails.getCurrentUserInfo();
+        }
         return currentUser;
     }
     /**
@@ -48,14 +46,9 @@ public class MyMetaObjectHandler implements MetaObjectHandler, IAuthenticationFa
      */
     @Override
     public void insertFill(MetaObject metaObject) {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-//            String currentUserName = authentication.getName();
-//
-//        }
         User user = this.getCurrentUser();
         LOG.info(" -------------------- start insert fill ...  --------------------");
-        if (metaObject.hasGetter("createTime") && metaObject.hasGetter("updateTime")
+        if (null != user && metaObject.hasGetter("createTime") && metaObject.hasGetter("updateTime")
                 && metaObject.hasGetter("createId") && metaObject.hasGetter("updateId")) {
             setFieldValByName("createTime", new Date(), metaObject);
             setFieldValByName("updateTime", new Date(), metaObject);
@@ -73,7 +66,6 @@ public class MyMetaObjectHandler implements MetaObjectHandler, IAuthenticationFa
                 e.printStackTrace();
             }
         }
-
     }
 
     /**
@@ -83,7 +75,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler, IAuthenticationFa
     public void updateFill(MetaObject metaObject) {
         User user = this.getCurrentUser();
         LOG.info(" -------------------- start update fill ...  --------------------");
-        if (metaObject.hasGetter("et.updateTime") && metaObject.hasGetter("et.updateId")) {
+        if (null != user && metaObject.hasGetter("et.updateTime") && metaObject.hasGetter("et.updateId")) {
             setFieldValByName("updateTime", new Date(), metaObject);
             setFieldValByName("updateId", user.getId(), metaObject);
         }

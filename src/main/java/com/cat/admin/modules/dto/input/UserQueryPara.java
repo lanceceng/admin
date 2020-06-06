@@ -20,7 +20,7 @@ public class UserQueryPara extends BasePageQuery {
     private Integer id;
 
     @ApiModelProperty(value = "账号")
-    private String username;
+    private String username; //security的就是全小写的username命名，保持跟它一致，没办法
 
     @ApiModelProperty(value = "账号 - 修改个人信息使用")
     private String account;

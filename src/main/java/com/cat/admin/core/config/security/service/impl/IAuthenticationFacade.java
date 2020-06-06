@@ -11,4 +11,17 @@ public interface IAuthenticationFacade {
     Authentication getAuthentication();
 
     User getCurrentUser();
+
+    //    @Override
+//    public Authentication getAuthentication() {
+//        return SecurityContextHolder.getContext().getAuthentication();
+//    }
+//
+//    @Override
+//    public User getCurrentUser(){
+//        Authentication authentication = this.getAuthentication();
+//        SecurityUser userDetails = (SecurityUser) authentication.getPrincipal();
+//        User currentUser = userDetails.getCurrentUserInfo();
+//        return currentUser;
+//    }
 }

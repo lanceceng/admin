@@ -50,7 +50,7 @@ public class User extends BaseEntity<User> {
 	@NotBlank(message = "账号不能为空", groups = {Create.class, Update.class})
 	@Length(max = 100, message = "账号不能超过100个字符")
 	@Pattern(regexp = "^[\\u4E00-\\u9FA5A-Za-z0-9\\*]*$", message = "账号限制：最多100字符，包含文字、字母和数字")
-	private String username;
+	private String username; //security的就是全小写的username命名，保持跟它一致，没办法
     /**
      * 登录密码
      */
