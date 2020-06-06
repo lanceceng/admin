@@ -21,7 +21,7 @@ spring:
     druid:
       db1:
         # 连接，注意各个配置，尤其是要一次性执行多条 SQL 时，要 allowMultiQueries=true
-        url: jdbc:mysql://127.0.0.1/c1_admin?useUnicode=true&useSSL=false&allowMultiQueries=true&characterEncoding=utf-8&useLegacyDatetimeCode=false&serverTimezone=UTC
+        url: jdbc:mysql://127.0.0.1/cat_admin1?useUnicode=true&useSSL=false&allowMultiQueries=true&characterEncoding=utf-8&useLegacyDatetimeCode=false&serverTimezone=UTC
         # 用户名 root
         username: root
         # 密码 root
@@ -34,7 +34,7 @@ spring:
         minIdle: 5
         maxActive: 20
       db2:
-        url: jdbc:mysql://127.0.0.1/c1_admin?useUnicode=true&useSSL=false&allowMultiQueries=true&characterEncoding=utf-8&useLegacyDatetimeCode=false&serverTimezone=UTC
+        url: jdbc:mysql://127.0.0.1/cat_admin1?useUnicode=true&useSSL=false&allowMultiQueries=true&characterEncoding=utf-8&useLegacyDatetimeCode=false&serverTimezone=UTC
         # 用户名 root
         username: root
         # 密码 root
@@ -133,3 +133,42 @@ jwt:
   secret: secret
   expiration: 7200000
   token: Authorization
+
+cat:
+  swagger:
+    title: 测试项目demo接口文档
+    description: 测试项目demo接口文档
+    version: 1.0.0
+    termsOfServiceUrl:
+    contactName:
+    contactUrl:
+    contactEmail:
+    license:
+    licenseUrl:
+  #安全认证
+  auth:
+    # token过期时间（分钟）
+    tokenExpireTime: 60
+    # 用户选择保存登录状态对应token过期时间（天）
+    saveLoginTime: 7
+    # 限制用户登陆错误次数（次）
+    loginTimeLimit: 10
+    # 错误超过次数后多少分钟后才能继续登录（分钟）
+    loginAfterTime: 10
+    ignoreUrls:
+      - /login
+      - /api/system/user/getCurrentUserInfo
+      - /index
+      - /logout
+      - /swagger-ui.html
+      #      - /swagger-resources/**
+      - /swagger-resources/configuration/ui
+      - /swagger-resources
+      - /v2/api-docs
+      - /swagger-resources/configuration/security
+      #      - /swagger/**
+      #      - /**/v2/api-docs
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico

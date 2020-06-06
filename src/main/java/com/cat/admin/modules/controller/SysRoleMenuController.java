@@ -1,35 +1,79 @@
 package com.cat.admin.modules.controller;
 
-import com.cat.admin.modules.entity.SysRoleMenu;
-import com.cat.admin.modules.service.SysRoleMenuService;
-import org.springframework.web.bind.annotation.*;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.cat.admin.core.api.BaseController;
+import com.cat.admin.core.utils.ApiResult;
+import com.cat.admin.modules.dto.input.RoleMenuQueryPara;
+import com.cat.admin.modules.entity.RoleMenu;
+import com.cat.admin.modules.service.IRoleMenuService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
+import java.util.List;
+
 
 /**
- * 角色菜单关系表(SysRoleMenu)表控制层
+ * <p> 系统管理 - 角色-菜单关联表  接口 </p>
  *
- * @author makejava
- * @since 2020-05-31 23:38:28
+ * @author: cat
+ * @description:
+ * @date: 2020-06-06
+ *
  */
 @RestController
-@RequestMapping("role/menu")
-public class SysRoleMenuController {
-    /**
-     * 服务对象
-     */
-    @Resource
-    private SysRoleMenuService sysRoleMenuService;
+@RequestMapping("/api/system/roleMenu")
+@Api(description = "系统管理 - 角色-菜单关联表 接口")
+public class SysRoleMenuController extends BaseController {
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("/selectOne")
-    public SysRoleMenu selectOne(String id) {
-        return this.sysRoleMenuService.queryById(id);
+    @Autowired
+    IRoleMenuService roleMenuService;
+
+    @PostMapping(value = "/listPage", produces = "application/json;charset=utf-8")
+    @ApiOperation(value = "获取系统管理 - 角色-菜单关联表 列表分页", httpMethod = "POST", response = ApiResult.class)
+    public ApiResult listPage(@RequestBody RoleMenuQueryPara filter) {
+        Page<RoleMenu> page = new Page<>(filter.getPage(),filter.getLimit());
+        roleMenuService.listPage(page, filter);
+        return ApiResult.ok("获取系统管理 - 角色-菜单关联表 列表分页成功", page);
+    }
+
+    @PostMapping(value = "/list", produces = "application/json;charset=utf-8")
+    @ApiOperation(value = "获取系统管理 - 角色-菜单关联表 列表", httpMethod = "POST", response = ApiResult.class)
+    public ApiResult list(@RequestBody RoleMenuQueryPara filter) {
+        List<RoleMenu> result = roleMenuService.list(filter);
+        return ApiResult.ok("获取系统管理 - 角色-菜单关联表 列表成功",result);
+    }
+
+    @PostMapping(value = "/saveOrUpdate", produces = "application/json;charset=utf-8")
+    @ApiOperation(value = "保存或更新系统管理 - 角色-菜单关联表 ", httpMethod = "POST", response = ApiResult.class)
+    public ApiResult saveOrUpdate(@RequestBody RoleMenu input) {
+        Integer id = roleMenuService.saveRoleMenu(input);
+        return ApiResult.ok("保存系统管理 - 角色-菜单关联表 成功", id);
+    }
+
+    @PostMapping(value = "/delete", produces = "application/json;charset=utf-8")
+    @ApiOperation(value = "删除系统管理 - 角色-菜单关联表 ", httpMethod = "POST", response = ApiResult.class)
+    public ApiResult delete(@RequestBody RoleMenuQueryPara input) {
+        roleMenuService.removeById(input.getId());
+        return ApiResult.ok("删除系统管理 - 角色-菜单关联表 成功");
+    }
+
+    @PostMapping(value = "/detail", produces = "application/json;charset=utf-8")
+    @ApiOperation(value = "根据ID获取系统管理 - 角色-菜单关联表 信息", httpMethod = "POST", response = ApiResult.class)
+    public ApiResult detail(@RequestBody RoleMenuQueryPara input) {
+        RoleMenu entity = roleMenuService.getById(input.getId());
+        return ApiResult.ok("根据ID获取系统管理 - 角色-菜单关联表 信息成功", entity);
+    }
+
+    @PostMapping(value = "/saveRoleMenu", produces = "application/json;charset=utf-8")
+    @ApiOperation(value = "保存角色相关联菜单", httpMethod = "POST", response = ApiResult.class)
+    public ApiResult saveRoleMenu(@RequestBody RoleMenuQueryPara input) {
+        roleMenuService.saveRoleMenu( input );
+        return ApiResult.ok("保存角色相关联菜单成功");
     }
 
 }
