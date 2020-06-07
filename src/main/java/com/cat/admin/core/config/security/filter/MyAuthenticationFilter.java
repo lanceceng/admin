@@ -48,7 +48,14 @@ public class MyAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        System.out.println("请求头类型： " + request.getContentType());
+        log.info("请求头类型： " + request.getContentType());
+        /*if ((request.getContentType() == null && request.getContentLength() > 0)
+                || (request.getContentType() != null
+                && !request.getContentType().contains(Constants.REQUEST_HEADERS_CONTENT_TYPE)
+                && !request.getContentType().contains(Constants.REQUEST_HEADERS_MULTIPART_TYPE))) {
+            filterChain.doFilter(request, response);
+            return;
+        }*/
         if ((request.getContentType() == null && request.getContentLength() > 0) || (request.getContentType() != null && !request.getContentType().contains(Constants.REQUEST_HEADERS_CONTENT_TYPE))) {
             filterChain.doFilter(request, response);
             return;

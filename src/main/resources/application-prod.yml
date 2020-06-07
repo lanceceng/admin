@@ -10,6 +10,11 @@ spring:
   mvc:
     # 当出现 404 错误时，直接抛出异常（默认是显示一个错误页面）
     throw-exception-if-no-handler-found: true
+    # spring boot 2.2.0以上的版本，由于logback过滤器导致上传文件失败
+    hiddenmethod:
+      filter:
+        enabled: true
+    # ↑
   freemarker:
     # 关闭模版检查
     checkTemplateLocation: false

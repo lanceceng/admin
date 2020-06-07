@@ -42,6 +42,12 @@ public class Constants {
     public static final String REQUEST_HEADERS_CONTENT_TYPE = "application/json";
 
     /**
+     * 请求头类型：
+     * multipart/form-data
+     */
+    public static final String REQUEST_HEADERS_MULTIPART_TYPE = "multipart/form-data";
+
+    /**
      * 登录者角色
      */
     public static final String ROLE_LOGIN = "role_login";
