@@ -8,6 +8,7 @@ import com.cat.admin.modules.entity.Role;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -67,6 +68,9 @@ public class SysFileController extends BaseController {
 
     @PostMapping("/upload")
     @ResponseBody
+//    @PreAuthorize("isAnonymous()")
+//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('sys:file:add')")
     public ApiResult upload(@RequestParam("file") MultipartFile file) {
         if (file.isEmpty()) {
             return ApiResult.fail("上传失败，请选择文件");

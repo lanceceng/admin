@@ -31,7 +31,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true) // 控制权限注解
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired(required = false)

@@ -69,16 +69,20 @@ public class UrlFilterInvocationSecurityMetadataSource implements FilterInvocati
         for (Menu permission : permissionList) {
             // 获取该url所对应的权限
             if (("/api" + permission.getUrl()).equals(requestUrl)) {
+                //根据权限id查询角色菜单关系表
                 List<RoleMenu> permissions = roleMenuService.list(new QueryWrapper<RoleMenu>().eq("menu_id", permission.getId()));
                 List<String> roles = new LinkedList<>();
                 if (!CollectionUtils.isEmpty(permissions)){
                     permissions.forEach( e -> {
+                        //角色id
                         Integer roleId = e.getRoleId();
+                        //获取角色
                         Role role = roleService.getById(roleId);
+                        //添加角色编码到roles列表
                         roles.add(role.getCode());
                     });
                 }
-                // 保存该url对应角色权限信息
+                // 保存该url对应角色权限信息，将系统的角色编码列表交给security框架
                 return SecurityConfig.createList(roles.toArray(new String[roles.size()]));
             }
         }
